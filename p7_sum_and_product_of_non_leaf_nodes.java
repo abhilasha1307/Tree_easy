@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 =========================================
 PROBLEM:)
@@ -21,6 +19,18 @@ Space :O(h)
 */
 
 public class p7_sum_and_product_of_non_leaf_nodes extends helper {
+
+ public static void main(String[] args) {
+
+  treeNode root = new treeNode(1);
+  root.left = new treeNode(2);
+  root.right = new treeNode(30);
+  root.left.left = new treeNode(4);
+  root.left.right = new treeNode(6);
+
+  System.out.println(Sum(root));
+  System.out.println(Product(root));
+ }
 
  public static int Sum(treeNode root) {
   if (root == null) {
@@ -52,34 +62,4 @@ public class p7_sum_and_product_of_non_leaf_nodes extends helper {
   }
  }
 
- public static void main(String[] args) {
-
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(30);
-  root.left.left = new treeNode(4);
-  root.left.right = new treeNode(6);
-
-  System.out.println(Sum(root));
-  System.out.println(Product(root));
- }
 }
-
-// ===================================
-// alternate code
-// ===================================
-
-/*
- * static class Int { int a; }
- * 
- * // Computes the product of non-leaf // nodes in a tree static void
- * findProductSum(Node root, Int prod, Int sum) { // Base cases if (root == null
- * || (root.left == null && root.right == null)) return;
- * 
- * // if current node is non-leaf, // calculate product and sum if (root.left !=
- * null || root.right != null) { prod.a *= root.data; sum.a += root.data; }
- * 
- * // If root is Not null and its one of its // child is also not null
- * findProductSum(root.left, prod, sum); findProductSum(root.right, prod, sum);
- * }
- */

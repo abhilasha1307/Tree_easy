@@ -1,10 +1,12 @@
-package TREE.TREE_easy;
 /*
 ===========================
 PROBLEM :)
 ============================
 given the root of a tree, we have to find the height of the tree
 */
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*
 ===============================
@@ -19,6 +21,27 @@ Space : O(h); h is the heigth of the tree (O(n) for skewed tree)
 */
 public class p4_height_of_BT extends helper {
 
+ public static void main(String[] args) {
+
+  treeNode root = new treeNode(1);
+  root.left = new treeNode(2);
+  root.left.left = new treeNode(4);
+  root.left.right = new treeNode(5);
+
+  root.right = new treeNode(3);
+  root.right.left = new treeNode(6);
+  root.right.right = new treeNode(7);
+  root.right.left.left = new treeNode(8);
+  root.right.left.right = new treeNode(9);
+
+  root.right.right.left = new treeNode(10);
+  root.right.right.right = new treeNode(11);
+  root.right.right.left.left = new treeNode(13);
+  root.right.right.left.right = new treeNode(12);
+
+  System.out.println(height(root));
+ }
+
  public static int height(treeNode root) {
 
   if (root == null) {
@@ -27,30 +50,52 @@ public class p4_height_of_BT extends helper {
   int max_left = height(root.left);
   int max_right = height(root.right);
 
-  if (max_left > max_right) {
-   return max_left + 1;
-  }
-
-  else {
-   return max_right + 1;
-  }
+  return 1 + Math.max(max_left, max_right);
  }
 
- public static void main(String[] args) {
+ // =================================================================
+ // APPROACH:
+ // =================================================================
+ // Used Level order traversal
+ // When we add a node or a said number of nodes in the queue that means the
+ // height has
+ // gone up by one, as nodes(a said number, nodecount here) exist at the level
+ // nodecount is used to see if there are nodes present on the current level and
+ // also if they do
+ // we add there their children( if they exist) to the queue so that them and
+ // their subtrees can be evaluated further
+ // if the Queue is empty, or the nodeCount(= Q.size) is zero it means that this
+ // is the leaf node level and there will be no further children for any of these
+ // nodes
 
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(3);
-  root.left.left = new treeNode(4);
-  root.left.right = new treeNode(5);
-  root.left.left.left = new treeNode(8);
-  root.left.left.left.left = new treeNode(9);
-  root.left.left.left.right = new treeNode(10);
-  root.right.left = new treeNode(6);
-  root.right.right = new treeNode(7);
+ // Time : O(n)
+ // Space : O(h)
 
-  System.out.println(height(root));
+ public static int height_2(treeNode node) {
+  if (node == null) {
+   return 0;
+  }
+
+  Queue<treeNode> Q = new LinkedList<>();
+  Q.add(node);
+  int height = 0;
+
+  while (true) {
+   int nodeCount = Q.size();
+   if (nodeCount == 0) {
+    return height;
+   } else
+    height++;
+
+   while (nodeCount > 0) {
+    treeNode t = Q.poll();
+    if (t.left != null)
+     Q.add(t.left);
+    if (t.right != null)
+     Q.add(t.right);
+    nodeCount--;
+   }
+  }
 
  }
-
 }

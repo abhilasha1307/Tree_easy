@@ -1,4 +1,3 @@
-package TREE.TREE_easy;
 //do using one stack
 
 /*

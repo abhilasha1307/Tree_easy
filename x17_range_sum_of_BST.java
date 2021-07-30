@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 =========================================
 PROBLEM:) 938
@@ -26,6 +24,23 @@ For the recursive implementation, the recursion will consume additional space in
 
 */
 public class x17_range_sum_of_BST extends helper {
+
+ public static void main(String[] args) {
+  treeNode root = new treeNode(8);
+  root.left = new treeNode(5);
+  root.left.left = new treeNode(4);
+  root.left.left.left = new treeNode(3);
+  root.left.left.left.left = new treeNode(1);
+  root.left.right = new treeNode(6);
+
+  root.right = new treeNode(9);
+  root.right.right = new treeNode(10);
+  int low = 4;
+  int high = 10;
+
+  System.out.println(rangeSumBST(root, low, high));
+ }
+
  public static int rangeSumBST(treeNode root, int low, int high) {
   int sum = 0;
   if (root == null) {
@@ -45,31 +60,6 @@ public class x17_range_sum_of_BST extends helper {
   }
 
   return sum;
- }
-
- public static void main(String[] args) {
-  // 10,5,15,3,7,13,18,1,null,6
-  /*
-   * treeNode root = new treeNode(10); root.left = new treeNode(5); root.right =
-   * new treeNode(15); root.left.left = new treeNode(3); root.left.right = new
-   * treeNode(7); root.right.right = new treeNode(18); root.right.left = new
-   * treeNode(13); root.left.left.left = new treeNode(1); root.left.right.left =
-   * new treeNode(6);
-   */
-
-  treeNode root = new treeNode(8);
-  root.left = new treeNode(5);
-  root.left.left = new treeNode(4);
-  root.left.left.left = new treeNode(3);
-  root.left.left.left.left = new treeNode(1);
-  root.left.right = new treeNode(6);
-
-  root.right = new treeNode(9);
-  root.right.right = new treeNode(10);
-  int low = 4;
-  int high = 10;
-
-  System.out.println(rangeSumBST(root, low, high));
  }
 
 }

@@ -1,7 +1,22 @@
-package TREE.TREE_easy;
-
 import java.util.*;
 
+/*
+========================================
+PROBLEM:)
+=======================================
+Given a Binary Tree, print right view of it. Right view of a Binary Tree is set of nodes visible when tree is visited from right side.
+*/
+
+/*
+==========================================
+APPROACH:)
+==========================================
+similar to left view of BT
+difference: calling is done for right subtree first and then left subtree
+
+Time: O(N) N = number of nodes in the tree
+Space: O(N) ; skewed tree 
+*/
 public class p14_rightView_of_BT extends helper {
  int max_level = 0;
 

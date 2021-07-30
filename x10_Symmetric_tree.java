@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 ===========================================
 PROBLEM:) 101
@@ -51,37 +49,37 @@ Space:O(N)
 */
 public class x10_Symmetric_tree extends helper {
 
- public static boolean isSymmetric(treeNode root) {
-  if (root == null) {
-   return true;
-  }
-  return helper_fun(root.left, root.right);
- }
-
- public static boolean helper_fun(treeNode node1, treeNode node2) {
-
-  if (node1 == null && node2 == null) {
-   return true;
+  public static boolean isSymmetric(treeNode root) {
+    if (root == null) {
+      return true;
+    }
+    return helper_fun(root.left, root.right);
   }
 
-  if (node1 == null || node2 == null) {
-   return false;
+  public static boolean helper_fun(treeNode node1, treeNode node2) {
+
+    if (node1 == null && node2 == null) {
+      return true;
+    }
+
+    if (node1 == null || node2 == null) {
+      return false;
+    }
+
+    return ((node1.data == node2.data) && helper_fun(node1.left, node2.right) && helper_fun(node1.right, node2.left));
   }
 
-  return ((node1.data == node2.data) && helper_fun(node1.left, node2.right) && helper_fun(node1.right, node2.left));
- }
+  public static void main(String[] args) {
+    treeNode root = new treeNode(1);
+    root.left = new treeNode(2);
+    root.right = new treeNode(2);
+    root.left.left = new treeNode(3);
+    root.left.right = new treeNode(4);
 
- public static void main(String[] args) {
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(2);
-  root.left.left = new treeNode(3);
-  root.left.right = new treeNode(4);
+    root.right.left = new treeNode(4);
+    root.right.right = new treeNode(3);
 
-  root.right.left = new treeNode(4);
-  root.right.right = new treeNode(3);
-
-  System.out.println(isSymmetric(root));
- }
+    System.out.println(isSymmetric(root));
+  }
 
 }

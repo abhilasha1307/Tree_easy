@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 =======================================================
 PROBLEM:) 111
@@ -74,41 +72,41 @@ Space : O(space occupied by Queue)
 
 public class x7_minimum_depth_of_BT extends helper {
 
- public static int minDepth(treeNode root) {
-  if (root == null) {
-   return 0;
+  public static int minDepth(treeNode root) {
+    if (root == null) {
+      return 0;
+    }
+    if (root.left == null && root.right == null) {
+      return 1;
+    }
+
+    if (root.left == null) {
+      return minDepth(root.right) + 1;
+    }
+
+    if (root.right == null) {
+      return minDepth(root.left) + 1;
+    }
+
+    return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
   }
-  if (root.left == null && root.right == null) {
-   return 1;
+
+  public static void main(String[] args) {
+
+    treeNode root = new treeNode(1);
+    root.left = new treeNode(2);
+    root.right = new treeNode(3);
+    root.left.right = new treeNode(4);
+    root.left.right.left = new treeNode(6);
+    root.left.right.left.left = new treeNode(9);
+    root.left.right.left.right = new treeNode(8);
+    root.left.right.left.left.left = new treeNode(10);
+    root.left.right.left.left.right = new treeNode(11);
+
+    root.right.left = new treeNode(5);
+    root.right.left.right = new treeNode(7);
+
+    System.out.println(minDepth(root));
+
   }
-
-  if (root.left == null) {
-   return minDepth(root.right) + 1;
-  }
-
-  if (root.right == null) {
-   return minDepth(root.left) + 1;
-  }
-
-  return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
- }
-
- public static void main(String[] args) {
-
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(3);
-  root.left.right = new treeNode(4);
-  root.left.right.left = new treeNode(6);
-  root.left.right.left.left = new treeNode(9);
-  root.left.right.left.right = new treeNode(8);
-  root.left.right.left.left.left = new treeNode(10);
-  root.left.right.left.left.right = new treeNode(11);
-
-  root.right.left = new treeNode(5);
-  root.right.left.right = new treeNode(7);
-
-  System.out.println(minDepth(root));
-
- }
 }

@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 ==============================================
 PROBLEM:)
@@ -16,6 +14,59 @@ a single leaf node, is a BST
 
 Time : O(n)
 Space : O(h)
+*/
+
+/*
+=============================================================
+APPROACH:) when the tree is skewed
+=============================================================
+public static boolean isBST(treeNode root)
+{
+  return isBSTUtil(root, null,null);
+}
+
+public static boolean isBSTUtil(treeNode node, treeNode l, treeNode r)
+{
+  if(node == null)
+  {
+    return true;
+  }
+  if(l!=null && l.data>=node.data)
+  {
+    return false;
+  }
+
+  if(r!= null && r.data<= node.data)
+  {
+    return false;
+  }
+
+  return(isBSTUtil(root.left,l,root) && isBSTUtil(root.right,root,r));
+}
+*/
+
+/*
+
+APPROACH 2:) when the tree is skewed
+public static boolean isBST(treeNode root)
+{
+  return(isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+}
+
+public static boolean isBSTUtil(treeNode root, int min, int max)
+{
+  if(root == null)
+  {
+    return true;
+  }
+
+  if(root.data<= min || root.data>=max)
+  {
+    return false;
+  }
+
+  return(isBSTUtil(root.left, min, root.data) && isBSTUtil(root.right, root.data, max));
+}
 */
 
 public class p18_check_if_bt_is_BST extends helper {

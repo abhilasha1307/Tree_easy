@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 import java.util.ArrayList;
 import java.util.List;
 

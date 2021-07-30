@@ -1,4 +1,3 @@
-package TREE.TREE_easy;
 //do using dtring bulder
 
 //string concatenation is too costly. Takes O(n) to copy one character
@@ -110,40 +109,40 @@ import java.util.List;
 
 public class x13_BT_paths extends helper {
 
- public static List<String> binaryTreePaths(treeNode root) {
+  public static List<String> binaryTreePaths(treeNode root) {
 
-  List<String> res = new ArrayList<>();
+    List<String> res = new ArrayList<>();
 
-  if (root == null) {
-   return res;
-  }
-  helper_function(root, "", res);
+    if (root == null) {
+      return res;
+    }
+    helper_function(root, "", res);
 
-  return res;
- }
-
- public static void helper_function(treeNode root, String str, List<String> res) {
-  if (root.left == null && root.right == null) {
-   res.add(str + root.data); // after this steps str goes back to being empty
+    return res;
   }
 
-  if (root.left != null) {
-   helper_function(root.left, str + root.data + "->", res);
+  public static void helper_function(treeNode root, String str, List<String> res) {
+    if (root.left == null && root.right == null) {
+      res.add(str + root.data); // after this steps str goes back to being empty
+    }
+
+    if (root.left != null) {
+      helper_function(root.left, str + root.data + "->", res);
+    }
+
+    if (root.right != null) {
+      helper_function(root.right, str + root.data + "->", res);
+    }
   }
 
-  if (root.right != null) {
-   helper_function(root.right, str + root.data + "->", res);
+  public static void main(String[] args) {
+
+    treeNode root = new treeNode(1);
+    root.left = new treeNode(2);
+    root.right = new treeNode(3);
+    root.left.right = new treeNode(5);
+
+    System.out.println(binaryTreePaths(root));
+
   }
- }
-
- public static void main(String[] args) {
-
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(3);
-  root.left.right = new treeNode(5);
-
-  System.out.println(binaryTreePaths(root));
-
- }
 }

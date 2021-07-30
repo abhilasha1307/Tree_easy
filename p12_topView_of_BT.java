@@ -1,8 +1,48 @@
-package TREE.TREE_easy;
-
 import java.util.*;
 
+/*
+====================================================
+PROBLEM:)
+====================================================
+Top view of a binary tree is the set of nodes visible when the tree is viewed from the top. 
+Given a binary tree, print the top view of it. The output nodes can be printed in any order.
+*/
+
+/*
+=================================================
+APPROACH:
+==================================================
+A node x is there in output if x is the topmost node at its horizontal distance. 
+Horizontal distance of left child of a node x is equal to horizontal distance of x minus 1, and that of right child is horizontal distance of x plus 1
+
+traversing the tree, add root to queue (type: QueueObj which has treeNode and horizontal distance)
+while the queue is not empty, for each node we check if it the first node at its horizontal distance, if yes, its added to the map
+add the left and the right child to the queue with their horizontal distances.
+print the nodes by accessing the value of entries in the Map.
+
+Time: O(N), N is the no. of nodes
+Space: O(N), worst case; skewed tree
+*/
+
+//TAKE AWAY: HORIZONTAL DISTANCE AND HOW IT IS USED
+
 public class p12_topView_of_BT extends helper {
+
+ public static void main(String[] args) {
+  treeNode root = new treeNode(3);
+  root.left = new treeNode(6);
+  root.left.right = new treeNode(8);
+  root.left.right.left = new treeNode(10);
+  root.left.right.left.left = new treeNode(12);
+  root.left.right.left.right = new treeNode(13);
+  root.right = new treeNode(7);
+  root.right.left = new treeNode(9);
+  root.right.left.right = new treeNode(11);
+  root.right.left.right.left = new treeNode(14);
+  root.right.left.right.right = new treeNode(15);
+
+  topView(root);
+ }
 
  public static void topView(treeNode root) {
   class QueueObj {
@@ -43,56 +83,4 @@ public class p12_topView_of_BT extends helper {
 
  }
 
- public static void main(String[] args) {
-  /*
-   * treeNode root = new treeNode(10); root.left = new treeNode(20);
-   * root.left.left = new treeNode(40); root.left.right = new treeNode(60);
-   * root.right = new treeNode(30); root.right.left = new treeNode(90);
-   * root.right.right = new treeNode(100);
-   */
-
-  treeNode root = new treeNode(3);
-  root.left = new treeNode(6);
-  root.left.right = new treeNode(8);
-  root.left.right.left = new treeNode(10);
-  root.left.right.left.left = new treeNode(12);
-  root.left.right.left.right = new treeNode(13);
-  root.right = new treeNode(7);
-  root.right.left = new treeNode(9);
-  root.right.left.right = new treeNode(11);
-  root.right.left.right.left = new treeNode(14);
-  root.right.left.right.right = new treeNode(15);
-
-  topView(root);
- }
-
 }
-
-/*
- * alternative code : static class pair { int first, second;
- * 
- * pair() { }
- * 
- * pair(int i, int j) { first = i; second = j; } }
- * 
- * // map to store the pair of node value and // its level with respect to the
- * vertical // distance from root. static TreeMap<Integer, pair> m = new
- * TreeMap<>();
- * 
- * // function to create a new node static Node newNode(int key) { Node node =
- * new Node(); node.left = node.right = null; node.data = key; return node; }
- * 
- * // function to fill the map static void fillMap(Node root, int d, int l) { if
- * (root == null) return;
- * 
- * if (m.get(d) == null) { m.put(d, new pair(root.data, l)); } else if
- * (m.get(d).second > l) { m.put(d, new pair(root.data, l)); }
- * 
- * fillMap(root.left, d - 1, l + 1); fillMap(root.right, d + 1, l + 1); }
- * 
- * // function should print the topView of // the binary tree static void
- * topView(Node root) { fillMap(root, 0, 0);
- * 
- * for (Map.Entry<Integer, pair> entry : m.entrySet()) {
- * System.out.print(entry.getValue().first + " "); } }
- */

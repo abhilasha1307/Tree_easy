@@ -1,5 +1,4 @@
-package TREE.TREE_easy;
-
+import java.util.*;
 /*
 ========================================
 PROBLEM:)
@@ -64,9 +63,20 @@ Space : O(n)
 n is the number of nodes in the BT
 */
 
-import java.util.ArrayList;
-
 public class p8_level_order_traversal extends helper {
+
+ public static void main(String[] args) {
+
+  treeNode root = new treeNode(10);
+  root.left = new treeNode(20);
+  root.right = new treeNode(30);
+  root.left.left = new treeNode(40);
+  root.left.right = new treeNode(60);
+  root.right.left = new treeNode(50);
+  root.right.right = new treeNode(70);
+
+  System.out.println(levelOrder(root));
+ }
 
  public static ArrayList<Integer> levelOrder(treeNode root) {
   ArrayList<Integer> list = new ArrayList<Integer>();
@@ -112,16 +122,5 @@ public class p8_level_order_traversal extends helper {
   }
 
   return result;
- }
-
- public static void main(String[] args) {
-
-  treeNode root = new treeNode(10);
-  root.left = new treeNode(20);
-  root.right = new treeNode(30);
-  root.left.left = new treeNode(40);
-  root.left.right = new treeNode(60);
-
-  System.out.println(levelOrder(root));
  }
 }

@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 import java.util.*;
 
 public class x5_BT_Level_Order_Traversal_II extends helper {

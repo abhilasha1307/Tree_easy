@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 import java.util.*;
 
 /*
@@ -34,6 +32,20 @@ and call sstack will take up O(h)
 */
 
 public class p11_boundary_traversal extends helper {
+ public static void main(String[] args) {
+
+  treeNode root = new treeNode(20);
+  root.left = new treeNode(8);
+  root.right = new treeNode(22);
+  root.left.left = new treeNode(4);
+  root.left.right = new treeNode(12);
+  root.left.right.left = new treeNode(10);
+  root.left.right.right = new treeNode(14);
+  root.right.right = new treeNode(25);
+
+  System.out.println(Boundary(root));
+
+ }
 
  public static ArrayList<Integer> Boundary(treeNode root) {
   ArrayList<Integer> result = new ArrayList<>();
@@ -65,19 +77,19 @@ public class p11_boundary_traversal extends helper {
  }
 
  public static void Leaves(treeNode node, ArrayList<Integer> list) {
-  if (node != null) {
-   Leaves(node.left, list);
-
-   Leaves(node.right, list);
-
-   if (node.left == null && node.right == null) {
-    list.add(node.data);
-   }
-
+  if (node == null) {
+   return;
   }
+  if (node.left == null && node.right == null) {
+   list.add(node.data);
+  }
+
+  Leaves(node.left, list);
+  Leaves(node.right, list);
  }
 
  public static void Right(treeNode node, ArrayList<Integer> list) {
+  // variation of postorder traversal
   if (node != null) {
    if (node.right != null) {
     Right(node.right, list);
@@ -89,31 +101,6 @@ public class p11_boundary_traversal extends helper {
     list.add(node.data);
    }
   }
- }
-
- public static void main(String[] args) {
-
-  treeNode root = new treeNode(20);
-  root.left = new treeNode(8);
-  root.right = new treeNode(22);
-  root.left.left = new treeNode(4);
-  root.left.right = new treeNode(12);
-  root.left.right.left = new treeNode(10);
-  root.left.right.right = new treeNode(14);
-  root.right.right = new treeNode(25);
-
-  /*
-   * treeNode root = new treeNode(3); root.left = new treeNode(6); root.left.right
-   * = new treeNode(9); root.left.right.left = new treeNode(10);
-   * root.left.right.left.left = new treeNode(11); root.left.right.left.right =
-   * new treeNode(12); root.right = new treeNode(17); root.right.left = new
-   * treeNode(18); root.right.left.right = new treeNode(19);
-   * root.right.left.right.left = new treeNode(13); root.right.left.right.right =
-   * new treeNode(14);
-   */
-
-  System.out.println(Boundary(root));
-
  }
 
 }

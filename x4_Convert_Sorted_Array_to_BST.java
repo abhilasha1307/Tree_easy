@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 public class x4_Convert_Sorted_Array_to_BST extends helper {
 
  public static class treeNode {

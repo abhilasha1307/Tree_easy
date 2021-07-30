@@ -1,6 +1,3 @@
-package TREE.TREE_easy;
-//iteration 
-
 /*
 ========================================
 PROBLEM:) //669

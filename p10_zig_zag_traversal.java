@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 =========================
 PROBELM:)
@@ -28,6 +26,18 @@ Space : O(n) + O(n) = O(n)
 import java.util.*;
 
 public class p10_zig_zag_traversal extends helper {
+ public static void main(String[] args) {
+  treeNode root = new treeNode(1);
+  root.left = new treeNode(2);
+  root.right = new treeNode(3);
+  root.left.left = new treeNode(7);
+  root.left.right = new treeNode(6);
+  root.right.left = new treeNode(5);
+  root.right.right = new treeNode(4);
+
+  System.out.println(Zig_Zag(root));
+ }
+
  static int level = 1;
 
  public static ArrayList<Integer> Zig_Zag(treeNode root) {
@@ -75,17 +85,4 @@ public class p10_zig_zag_traversal extends helper {
   }
   return list;
  }
-
- public static void main(String[] args) {
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(3);
-  root.left.left = new treeNode(7);
-  root.left.right = new treeNode(6);
-  root.right.left = new treeNode(5);
-  root.right.right = new treeNode(4);
-
-  System.out.println(Zig_Zag(root));
- }
-
 }

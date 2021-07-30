@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 =============================================
 PROBELM:) Given a Binary Tree, find sum of all right leaves in it.
@@ -19,6 +17,20 @@ Time : O(N)
 Space :O(h)
 */
 public class p9_sum_of_right_leaf_nodes extends helper {
+ public static void main(String[] args) {
+
+  treeNode root = new treeNode(1);
+  root.left = new treeNode(2);
+  root.right = new treeNode(3);
+  root.left.left = new treeNode(4);
+  root.left.right = new treeNode(5);
+  root.left.left.right = new treeNode(2);
+  root.right.right = new treeNode(8);
+  root.right.right.left = new treeNode(6);
+  root.right.right.right = new treeNode(7);
+
+  System.out.println(Sum(root));
+ }
 
  public static int Sum(treeNode root) {
   if (root == null) {
@@ -35,19 +47,4 @@ public class p9_sum_of_right_leaf_nodes extends helper {
   }
  }
 
- public static void main(String[] args) {
-
-  treeNode root = new treeNode(1);
-  root.left = new treeNode(2);
-  root.right = new treeNode(3);
-  root.left.left = new treeNode(4);
-  root.left.right = new treeNode(5);
-  root.left.left.right = new treeNode(2);
-  root.right.right = new treeNode(8);
-  root.right.right.left = new treeNode(6);
-  root.right.right.right = new treeNode(7);
-
-  System.out.println(Sum(root));
-
- }
 }

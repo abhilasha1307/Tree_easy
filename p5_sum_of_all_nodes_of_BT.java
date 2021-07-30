@@ -1,5 +1,3 @@
-package TREE.TREE_easy;
-
 /*
 ========================================
 PROBLEM:)
@@ -18,12 +16,6 @@ Time : O(n)
 Space :O(h)
 */
 public class p5_sum_of_all_nodes_of_BT extends helper {
- public static int sum(treeNode root) {
-  if (root == null)
-   return 0;
-
-  return (root.data + sum(root.left) + sum(root.right));
- }
 
  public static void main(String[] args) {
 
@@ -36,6 +28,13 @@ public class p5_sum_of_all_nodes_of_BT extends helper {
   root.right.right = new treeNode(7);
 
   System.out.println(sum(root));
-
  }
+
+ public static int sum(treeNode root) {
+  if (root == null)
+   return 0;
+
+  return (root.data + sum(root.left) + sum(root.right));
+ }
+
 }

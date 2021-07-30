@@ -1,6 +1,3 @@
-package TREE.TREE_easy;
-
-//morris traversal
 import java.util.ArrayList;
 import java.util.Stack;
 

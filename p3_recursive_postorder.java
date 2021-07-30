@@ -1,4 +1,5 @@
-package TREE.TREE_easy;
+import java.util.ArrayList;
+
 /*
 ===========================
 PROBLEM:)
@@ -17,9 +18,17 @@ time : O(n) [every node is visited once]
 space : O(h) 
 h is the height of the tree
 */
-import java.util.ArrayList;
 
 public class p3_recursive_postorder extends helper {
+ public static void main(String[] args) {
+  treeNode root = new treeNode(19);
+  root.left = new treeNode(10);
+  root.right = new treeNode(8);
+  root.left.left = new treeNode(11);
+  root.left.right = new treeNode(13);
+
+  System.out.println(postorder(root));
+ }
 
  public static ArrayList<Integer> postorder(treeNode root) {
   ArrayList<Integer> result = new ArrayList<Integer>();
@@ -30,15 +39,5 @@ public class p3_recursive_postorder extends helper {
    result.add(root.data);
   }
   return result;
- }
-
- public static void main(String[] args) {
-  treeNode root = new treeNode(19);
-  root.left = new treeNode(10);
-  root.right = new treeNode(8);
-  root.left.left = new treeNode(11);
-  root.left.right = new treeNode(13);
-
-  System.out.println(postorder(root));
  }
 }

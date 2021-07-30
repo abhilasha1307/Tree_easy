@@ -1,17 +1,14 @@
-package TREE.TREE_easy;
 
 public class helper {
-  public static class treeNode {
-    int data;
-    // int hd;
-    treeNode left, right;
 
-    treeNode(int d) {
-      data = d;
-      // hd = Integer.MAX_VALUE;
+  static class treeNode {
+    int data;
+    helper left;
+    helper right;
+
+    treeNode(int data) {
+      this.data = data;
       left = right = null;
     }
-
   }
-
 }
